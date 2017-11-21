@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.liandy.boomeffect.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/explosion_area"
+        android:layout_width="240dip"
+        android:layout_height="240dip"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/src"
+            android:layout_width="200dip"
+            android:layout_height="200dip"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+
+        <io.liandy.boomeffect.ExplosionField
+            android:id="@+id/explosion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        app:layout_constraintTop_toBottomOf="@id/explosion_area"
+        android:text="start"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <!--
+     如果将外层 LinearLayout 的 layout_width 设置为 wrap_content 会出现奇怪的现象
+     它的宽度将遵循 child 中最小的宽度
+    -->
+    <LinearLayout
+        android:id="@+id/control_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dip"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="重力"/>
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/gravity"
+                android:layout_width="200dip"
+                android:layout_height="30dip"
+                android:max="100"/>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/gravity_tip"
+                android:layout_width="50dip"
+                android:layout_height="wrap_content"
+                android:text="0"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="速度区间"/>
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/speed"
+                android:layout_width="200dip"
+                android:layout_height="30dip"
+                android:max="100"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/speed_tip"
+                android:layout_width="50dip"
+                android:layout_height="wrap_content"
+                android:text="0"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
